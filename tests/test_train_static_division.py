@@ -1,6 +1,6 @@
 """Test training on a static division task"""
 
-from test.shared import train_retry
+from tests.shared import train_retry
 
 def test_train_static_division():
     """Test training on a static division task"""

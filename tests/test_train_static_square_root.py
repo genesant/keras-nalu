@@ -1,7 +1,7 @@
 """Test training on a static square root task"""
 
-from test.shared import train_retry
 import numpy as np
+from tests.shared import train_retry
 
 def test_train_static_square_root():
     """Test training on a static square root task"""

@@ -1,8 +1,8 @@
 """Test loading and predicting with an NALU model"""
 
 from tempfile import mkstemp
-from test.shared import generate_dataset, train_retry
 from keras.models import load_model
+from tests.shared import generate_dataset, train_retry
 
 def test_load_and_predict():
     """Test loading and predicting with an NALU model"""

@@ -6,7 +6,7 @@ from keras.callbacks import EarlyStopping
 from keras.layers import Input
 from keras.models import Model
 from keras.optimizers import RMSprop
-from src.nalu import NALU
+from keras_nalu.nalu import NALU
 
 SEQ_LEN = 100
 INDICES = np.random.permutation(SEQ_LEN)
