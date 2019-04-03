@@ -5,3 +5,4 @@
 .pytest_cache
 .tensorboard
 __pycache__
+dist
