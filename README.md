@@ -47,8 +47,8 @@ model.fit(
     batch_size=256,
     epochs=epoch_count,
     validation_data=(X_validation, Y_validation),
-    x=datasetX_train,
-    y=datasetY_train,
+    x=X_train,
+    y=Y_train,
 )
 
 extrapolation_loss = model.evaluate(
