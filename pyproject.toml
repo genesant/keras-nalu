@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "keras_nalu"
+name = "keras-nalu"
 version = "1.0.0"
-description = "Keras NALU"
+description = "Keras implementation of a NALU layer"
 authors = ["Dennis Torres <djtorres0@gmail.com>"]
 license = "MIT"
+packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 keras = "^2.2"

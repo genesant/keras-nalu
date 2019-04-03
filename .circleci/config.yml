@@ -10,6 +10,6 @@ jobs:
       - run: poetry run py.test --cov-fail-under=100 -s -k 'test_load_and_predict or test_train_static_addition'
 workflows:
   version: 2
-  build_and_check:
+  check:
     jobs:
       - check
