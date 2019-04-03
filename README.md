@@ -17,7 +17,7 @@ pip install keras-nalu
 from keras.layers import Input
 from keras.models import Model
 from keras.optimizers import RMSprop
-from keras_nalu import NALU
+from keras_nalu.nalu import NALU
 
 # Your dataset
 X_train = ... # Interpolation data
