@@ -10,5 +10,5 @@ def test_train_static_division():
         expected_interpolation_loss=0.0625,
         expected_extrapolation_loss=0.2920,
         learning_rate=0.002,
-        task=lambda a, b: a * b,
+        task=lambda a, b: a / b,
     )
