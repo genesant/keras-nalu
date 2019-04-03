@@ -1,7 +1,7 @@
 """Test loading and predicting with an NALU model"""
 
 from tempfile import mkstemp
-from test.shared import generate_dataset, train
+from test.shared import generate_dataset, train_retry
 from keras.models import load_model
 
 def test_load_and_predict():
@@ -9,8 +9,10 @@ def test_load_and_predict():
 
     task = lambda a, _: a
 
-    model, _, _ = train(
+    model, _, _ = train_retry(
         epoch_count=1000,
+        expected_extrapolation_loss=0.0001,
+        expected_interpolation_loss=0.0001,
         learning_rate=0.05,
         task=task,
     )
