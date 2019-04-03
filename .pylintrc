@@ -1,0 +1,6 @@
+[MASTER]
+attr-rgx=[a-zA-Z_][a-z0-9_]{0,30}$
+max-args=100
+max-attributes=100
+max-locals=100
+variable-rgx=[a-zA-Z_][a-z0-9_]{0,30}$

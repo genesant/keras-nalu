@@ -1,0 +1,7 @@
+*.log
+.coverage
+.keras
+.mypy_cache
+.pytest_cache
+.tensorboard
+__pycache__
