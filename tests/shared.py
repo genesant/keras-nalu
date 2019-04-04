@@ -58,8 +58,8 @@ def train(epoch_count, learning_rate, task):
         batch_size=256,
         callbacks=[EarlyStopping(patience=epoch_count, restore_best_weights=True)],
         epochs=epoch_count,
-        verbose=2,
         validation_data=(dataset['X_validation'], dataset['Y_validation']),
+        verbose=2,
         x=dataset['X_train'],
         y=dataset['Y_train'],
     )
@@ -88,7 +88,7 @@ def train_retry(
     interpolation_loss = inf
     extrapolation_loss = inf
 
-    for _ in range(5):
+    for _ in range(6):
         model, interpolation_loss, extrapolation_loss = train(
             epoch_count=epoch_count,
             learning_rate=learning_rate,

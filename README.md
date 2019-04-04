@@ -20,7 +20,7 @@ from keras.optimizers import RMSprop
 from keras_nalu.nalu import NALU
 
 # Your dataset
-X_train = ... # Interpolation data
+X_test = ... # Interpolation data
 Y_test = ... # Interpolation data
 
 X_validation = ... # Extrapolation data (validation)

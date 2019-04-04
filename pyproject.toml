@@ -3,7 +3,11 @@ name = "keras-nalu"
 version = "1.0.2"
 description = "Keras implementation of a NALU layer"
 authors = ["Dennis Torres <djtorres0@gmail.com>"]
+homepage = "https://github.com/genesant/keras-nalu"
+keywords = ["keras", "nalu"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/genesant/keras-nalu"
 
 [tool.poetry.dependencies]
 keras = "^2.2"
