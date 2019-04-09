@@ -50,7 +50,7 @@ class NALU(Layer):
     def build(self, input_shape):
         input_dim = input_shape[-1]
 
-        if (self.cell is None):
+        if self.cell is None:
             self.G = self.add_weight(
                 constraint=self.G_constraint,
                 initializer=self.G_initializer,
