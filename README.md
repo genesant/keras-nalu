@@ -32,9 +32,9 @@ Y_test = ... # Extrapolation data (test)
 # Hyper parameters
 epoch_count=1000
 learning_rate = 0.05
-seq_len = 100
+sequence_len = 100
 
-inputs = Input(shape=(seq_len, ))
+inputs = Input(shape=(sequence_len, ))
 hidden = NALU(units=2)(inputs)
 hidden = NALU(units=2)(hidden)
 outputs = NALU(units=1)(hidden)
@@ -57,3 +57,19 @@ extrapolation_loss = model.evaluate(
     y=Y_test,
 )
 ```
+
+## Options
+
+### cell
+
+Cell to use in the NALU layer. May be 'a' (addition/subtraction), 'm' (multiplication/division/power), or None which, will apply a gating function to toggle between 'a' or 'm'.
+
+-   Default: `None`
+-   Type: `?('a' | 'm' | None)`
+
+### e
+
+Epsilon value added to inputs in order to prevent calculating the log of zero.
+
+-   Default: `1e-7`
+-   Type: `?float`

@@ -48,7 +48,7 @@ def train(epoch_count, learning_rate, task):
     inputs = Input(shape=(SEQ_LEN, ))
     hidden = NALU(units=2)(inputs)
     hidden = NALU(units=2)(hidden)
-    outputs = NALU(units=1)(hidden)
+    outputs = NALU(units=1, cell='a')(hidden)
 
     model = Model(inputs=inputs, outputs=outputs)
     model.summary()

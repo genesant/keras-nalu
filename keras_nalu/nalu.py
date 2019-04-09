@@ -23,10 +23,14 @@ class NALU(Layer):
             W_hat_constraint=None,
             W_hat_initializer='glorot_uniform',
             W_hat_regularizer=None,
+            cell=None,
             e=1e-7,
             **kwargs,
     ):
+        assert cell in ['a', 'm', None]
+
         super(NALU, self).__init__(**kwargs)
+        self.cell = cell
         self.G = None
         self.G_constraint = constraints.get(G_constraint)
         self.G_initializer = initializers.get(G_initializer)
@@ -46,13 +50,14 @@ class NALU(Layer):
     def build(self, input_shape):
         input_dim = input_shape[-1]
 
-        self.G = self.add_weight(
-            constraint=self.G_constraint,
-            initializer=self.G_initializer,
-            name='G',
-            regularizer=self.G_regularizer,
-            shape=(input_dim, self.units),
-        )
+        if (self.cell is None):
+            self.G = self.add_weight(
+                constraint=self.G_constraint,
+                initializer=self.G_initializer,
+                name='G',
+                regularizer=self.G_regularizer,
+                shape=(input_dim, self.units),
+            )
 
         self.M_hat = self.add_weight(
             constraint=self.M_hat_constraint,
@@ -77,8 +82,15 @@ class NALU(Layer):
         W = K.tanh(self.W_hat) * K.sigmoid(self.M_hat)
         a = K.dot(inputs, W)
         m = K.exp(K.dot(K.log(K.abs(inputs) + self.e), W))
-        g = K.sigmoid(K.dot(inputs, self.G))
-        y = (g * a) + ((1 - g) * m)
+
+        if self.cell == 'a':
+            y = a
+        elif self.cell == 'm':
+            y = m
+        else:
+            g = K.sigmoid(K.dot(inputs, self.G))
+            y = (g * a) + ((1 - g) * m)
+
         return y
 
     def compute_output_shape(self, input_shape):
@@ -100,6 +112,7 @@ class NALU(Layer):
             'W_hat_constraint': constraints.serialize(self.W_hat_constraint),
             'W_hat_initializer': initializers.serialize(self.W_hat_initializer),
             'W_hat_regularizer': regularizers.serialize(self.W_hat_regularizer),
+            'cell': self.cell,
             'e': self.e,
             'units': self.units,
         }
