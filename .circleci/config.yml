@@ -6,8 +6,9 @@ jobs:
     steps:
       - checkout
       - run: poetry install
-      - run: poetry run pylint **/*.py
-      - run: poetry run py.test --cov-fail-under=100 -s -k 'test_load_and_predict or test_train_static_addition'
+      - run: poetry run pylint keras_nalu
+      - run: poetry run pylint tests
+      - run: poetry run py.test --cov-fail-under=100 -sk 'test_load_and_predict or test_pretrained or test_train_static_addition'
 workflows:
   version: 2
   check:

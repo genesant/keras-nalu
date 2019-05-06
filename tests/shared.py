@@ -2,7 +2,7 @@
 
 from math import inf, isnan
 import numpy as np
-from keras.callbacks import EarlyStopping
+from keras.callbacks import EarlyStopping, TerminateOnNaN
 from keras.layers import Input
 from keras.models import Model
 from keras.optimizers import RMSprop
@@ -56,7 +56,10 @@ def train(epoch_count, learning_rate, task):
 
     result = model.fit(
         batch_size=256,
-        callbacks=[EarlyStopping(patience=epoch_count, restore_best_weights=True)],
+        callbacks=[
+            TerminateOnNaN(),
+            EarlyStopping(patience=epoch_count, restore_best_weights=True),
+        ],
         epochs=epoch_count,
         validation_data=(dataset['X_validation'], dataset['Y_validation']),
         verbose=2,
@@ -111,4 +114,5 @@ def train_retry(
 
     assert interpolation_loss <= expected_interpolation_loss
     assert extrapolation_loss <= expected_extrapolation_loss
+
     return model, extrapolation_loss, extrapolation_loss

@@ -1,4 +1,5 @@
 [MASTER]
+argument-rgx=[a-zA-Z_][a-z0-9_]{0,30}$
 attr-rgx=[a-zA-Z_][a-z0-9_]{0,30}$
 max-args=100
 max-attributes=100
