@@ -30,7 +30,7 @@ X_test = ... # Extrapolation data (test)
 Y_test = ... # Extrapolation data (test)
 
 # Hyper parameters
-epoch_count=1000
+epoch_count = 1000
 learning_rate = 0.05
 sequence_len = 100
 
