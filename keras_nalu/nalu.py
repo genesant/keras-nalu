@@ -24,7 +24,7 @@ class NALU(Layer):
             W_hat_initializer='glorot_uniform',
             W_hat_regularizer=None,
             cell=None,
-            e=1e-7,
+            e=1e-28,
             **kwargs,
     ):
         assert cell in ['a', 'm', None]
