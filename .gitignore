@@ -1,5 +1,4 @@
 *.egg-*
-*.h5
 *.log
 .coverage
 .keras

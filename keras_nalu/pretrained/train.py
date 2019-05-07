@@ -1,7 +1,7 @@
 """Pretrain Keras NALU model on counting task"""
 
 from os import path
-from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau, TerminateOnNaN
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TerminateOnNaN
 from keras.layers import Input
 from keras.models import Model
 from keras.optimizers import RMSprop
@@ -61,12 +61,6 @@ def train():
         EarlyStopping(
             patience=200,
             restore_best_weights=True,
-            verbose=1,
-        ),
-        ModelCheckpoint(
-            filepath=path.join(model_dir, 'model.checkpoint.h5'),
-            period=10,
-            save_best_only=True,
             verbose=1,
         ),
     ]
